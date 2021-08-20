@@ -1,0 +1,8 @@
+---
+- name: installing using packages
+  hosts: linux
+  tasks:
+  - name: installing cifs-utils
+    yum:
+      name: "{{packages}}"
+      state: present

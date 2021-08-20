@@ -1,0 +1,12 @@
+---
+- name: This playbook checks linux nodes for user1
+  hosts: linux
+  tasks:
+    - name:
+      command: cat /etc/passwd
+      register: users
+    - name: show which nodeo ohas user1
+      debug:
+        msg: "This node has the user"
+      when: users.stdout.find('user1') != -1
+ 

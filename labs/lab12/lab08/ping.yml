@@ -1,0 +1,11 @@
+---
+- name: This playbook installs apache
+  hosts: all
+  tasks:
+    - name: 'linux vm'
+      when: ansible_hostname == "ans6258-c-vm*""
+      ping:
+     
+    - name: pinging window host
+      when: ansible_hostname == "ans6258-w-vm*"
+      win_ping:

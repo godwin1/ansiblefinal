@@ -1,0 +1,16 @@
+---
+- name: installing using packages
+  hosts: ans6258-c-vm1
+  gather_facts: true
+  tasks:
+    - name: Displaying the entire ansble_facts information
+      debug:
+        var: ansible_facts
+
+    - name: Displaying the fqdn, ipv4 and short hostname
+      debug:
+        msg: >
+         The FQDN is {{ ansible_facts['fqdn'] }} with the IP of {{ ansible_facts ['eth0']['ipv4']['address'] }} 
+         and has {{ansible_facts['hostname' ]}} as short hostname
+        
+

@@ -1,0 +1,43 @@
+---
+- name: Demonstrating file managements
+  hosts: ans6258-c-vm1
+  tasks:
+    - name: Creating locfile
+      file:
+        path: /home/locfile
+        state: touch
+        mode: 0644
+        owner: root
+        group: root
+    
+    - name: copying locfile to /tmp directory
+      copy:
+        src: /home/locfile
+        dest: /tmp
+        mode: 0444
+        owner: root
+        group: root
+        remote_src: true
+
+    - name: setting SELinux
+      file:
+        path: /tmp/locfile
+        setype: etc_t
+    - name:  showing status of file
+      stat:
+        path: /tmp/locfile
+      register: stat_output
+    - name: displaying status
+      debug:
+        var: stat_output
+
+- name:  Ceating files
+  hosts: linux
+  tasks: 
+    - name: creating files on managed nodes
+      file:
+        path: /home/emptyfile
+        state: touch
+        mode: 0644
+        owner: root
+        group: root

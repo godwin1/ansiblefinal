@@ -1,0 +1,9 @@
+---
+- name: installing using packages
+  hosts: ans6258-c-vm1
+  tasks:
+  - name: installing bind and evolution
+    yum:
+      name: "{{packages}}"
+      state: present
+

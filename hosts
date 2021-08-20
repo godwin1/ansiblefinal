@@ -1,0 +1,26 @@
+[linux]
+#ans6258-c-vm1
+#ans6258-c-vm2
+group8-linux-vm1
+group8-linux-vm2
+
+[windows]
+#ans6258-w-vm
+group8-w-vm
+
+[windows:vars]
+ansible_user=windowusers1
+ansible_password="P@ssw0rd123"
+ansible_port=5985
+ansible_connection=winrm
+ansible_winrm_transport=ntlm
+ansible_become_method=runas
+ansible_winrm_server_cert_validation=ignore
+ssh_args=-o ControlMaster=no 
+
+
+[os:children]
+linux
+windows
+
+

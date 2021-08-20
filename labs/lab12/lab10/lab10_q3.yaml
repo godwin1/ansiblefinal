@@ -1,0 +1,12 @@
+---
+- name: playbook to add the string This is my CentOS VM to the /tmp/conditional
+  hosts: ans6258-c*
+  tasks:
+    - blockinfile:
+        path: /etc/systemd/resolve.conf
+        insertafter: EOF
+        backup: yes
+        state: present
+        block:
+          Domains = canadacentral.cloudapp.azure.com
+      when: ansible_distribution_version == "8.2" and ansible_kernel =="4.18.0-193.el8.x86_64"

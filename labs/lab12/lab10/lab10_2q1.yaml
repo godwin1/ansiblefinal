@@ -1,0 +1,11 @@
+---
+- name:  creating users using loop
+  hosts: linux
+  tasks:
+    - name: Adding user accounts linux
+      user:
+        name: "{{ item.username }}"
+        uid: "{{ item.userid }}"
+        state: present
+      loop: "{{ userinfo }}"
+

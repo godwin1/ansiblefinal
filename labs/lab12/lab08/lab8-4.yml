@@ -1,0 +1,18 @@
+---
+- name: Playbook to create create user and add it to a supplemetary group
+  hosts: ans6258-c-vm2
+  tasks: 
+    - name:
+      group:
+        name: devops
+        state: present
+        
+
+    - name: creating devops1
+      ansible.builtin.user:
+        name: devops1
+        uid: 2500
+        groups: devops
+        append: yes
+        
+  

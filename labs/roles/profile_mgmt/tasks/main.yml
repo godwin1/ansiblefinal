@@ -1,0 +1,29 @@
+---
+- name: adding ssh session timeout
+  blockinfile:
+    path: "{{abspath}}"
+    insertafter: EOF
+    backup: yes
+    state: present
+    block: |
+      export TMOUT=900
+- name: setting umask to 0077
+  lineinfile:
+    path: "{{abspath}}"
+    regex: "^umask"
+    line: "umask 0077"
+    state: present
+
+- name: task to run if the above fails
+  lineinfile:
+    path: ~/.bash_profile
+    regex: "^umask"
+    line: "umask 0066"
+    state: present
+
+- name: task to run always 
+  debug: 
+    msg: Playbook execution completed
+
+   
+    

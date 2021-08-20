@@ -1,0 +1,9 @@
+---
+- name: This playbook installes ypserv
+  hosts: localhost
+  tasks:
+    - name: install ypserv on linux localhost
+      dnf:
+        name:
+        - ypserv
+        state: present

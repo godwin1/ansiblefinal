@@ -1,0 +1,18 @@
+---
+- name: installing using packages
+  hosts: ans6258-c-vm1
+  tasks:
+  - name: installing bind and evolution
+    yum:
+      name: "{{packages}}"
+      state: latest
+    register: results
+  
+  - name: Displaying the entire output
+    debug:
+      var: results
+
+  - name: Displaying the name of the installed package
+    debug:
+      msg: The name of the installed app is {{ results ['changes']['installed'] }}
+

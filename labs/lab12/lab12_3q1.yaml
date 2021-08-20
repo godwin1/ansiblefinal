@@ -1,0 +1,5 @@
+---
+- name: This playbook demonstrate task failure handling
+  hosts: linux
+  tasks:
+  

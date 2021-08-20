@@ -1,0 +1,29 @@
+---
+- name: install apache and configure it
+  hosts: ans6258-c-vm1
+  tasks:
+    - name: installing Apache 
+      yum:
+        name: httpd
+        state: latest
+      notify: restart_httpd
+      
+    - name: Make sure a service unit is running
+      systemd:
+        state: started
+        name: httpd
+        enabled: true
+    
+    - name: get hostname
+      command: echo $HOSTNAME >> index.html
+
+    - name: adding hostname to /var/www/html/index.html
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+      
+  handlers:
+    - name: restart_httpd
+      systemd:
+        name: httpd
+        state: restarted

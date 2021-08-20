@@ -1,0 +1,25 @@
+---
+- name: This play demonstrate handlers
+  hosts: ans6258-c-vm2
+  tasks:
+    - name: install apache, mariadb-server
+      yum:
+        name: httpd,mariadb-server
+        state: latest
+      notify: 
+        - restart_httpd
+        - restart_mariadb
+  handlers:
+    - name: restart_httpd
+      systemd:
+        name: httpd
+        state: restarted
+    - name: restart_mariadb
+      systemd:
+        name: mariadb
+        state: restarted
+        enabled: true
+    - name: starting both services
+      shell: |
+          systemctl status httpd
+          systemctl status mariadb

@@ -1,0 +1,8 @@
+---
+- name: " creating parting and mounting"
+  hosts: linux
+  roles:
+    - datadisk
+    - system_profile
+    - users
+    - webserver

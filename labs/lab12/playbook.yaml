@@ -1,0 +1,11 @@
+---
+- name: This works with roles to install, remove and patch applications
+  hosts: linux
+  roles:
+    - package_remove
+    - package_install
+    - patching
+    - profile_mgmt
+    - timezone
+    - syslog_updates
+

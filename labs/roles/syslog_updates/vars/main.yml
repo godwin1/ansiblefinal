@@ -1,0 +1,5 @@
+---
+# vars file for syslog_updates
+syslog_conf_path: /etc/rsyslog.conf
+syslog_d_path: /etc/rsyslog.d
+log_path: /var/log

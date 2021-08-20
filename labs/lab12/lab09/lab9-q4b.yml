@@ -1,0 +1,11 @@
+---
+- name: "Listing the version of Setup package"
+  hosts: ans6258-c-vm1
+  tasks:
+  - name: Gathering packages
+    package_facts: 
+      manager: auto
+  - name: Displaying the setup package
+    debug:
+        msg: setup package version is {{packages['setup'][0].version }}
+      

@@ -1,0 +1,11 @@
+---
+- name: This playbook is to install nmap package on vm1
+  hosts: ans6258-c-vm1
+  vars:
+    packages: nmap
+  tasks:
+  - name: 
+    yum:
+      name: "{{packages}}"
+      state: latest
+    when: package is defined

@@ -1,0 +1,29 @@
+---
+- name: one variable and multi-task playbook
+  hosts: ans6258-c-vm*
+  tasks: 
+    - name: creating user4000 and cloudadmin group
+      when: ansible_hostname == "ans6258-c-vm-1"
+      user:
+        name: user4000
+        uid: 5000
+        state: present
+    - name:
+      when: ansible_hostname == "ans6258-c-vm-1"
+      group:
+        name: cloudadmin
+        gid: 2000
+        state: present
+        
+    - name: installing apache and nmap
+      yum:
+        name:
+        -  httpd
+        -  nmap
+        state: latest
+    - name: Make sure a service unit is running
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+

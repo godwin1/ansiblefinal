@@ -1,0 +1,16 @@
+---
+- name: one variable and multi-task playbook
+  hosts: ans6258-c-vm1
+  tasks: 
+    - name: This is task 1
+      user:
+        name: user4000
+        uid: 5000
+        state: absent
+ 
+    - name: This is task 2
+      group:
+        name: cloudadmin
+        gid: 2000
+        state: absent
+  

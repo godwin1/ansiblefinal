@@ -1,0 +1,21 @@
+---
+- name: This playbook installs apache
+  hosts: ans6258-c-vm*
+  tasks:
+    - name: update cache
+      yum:
+        update_cache: yes
+      
+    - name: installing apache and nmap
+      yum:
+        name:
+        -  httpd
+        -  nmap
+        state: absent
+
+    # - name: Make sure a service unit is running
+    #   systemd:
+    #     name: httpd
+    #     state: started
+    #     enabled: yes
+

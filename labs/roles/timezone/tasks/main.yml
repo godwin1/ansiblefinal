@@ -1,0 +1,6 @@
+---
+# tasks file for timezone
+- name: setting timezone 
+  timezone:
+    name: "{{timezone}}"
+  when:  ansible_distribution=="CentOS" or ansible_distribution=="RedHat"

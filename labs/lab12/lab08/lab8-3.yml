@@ -1,0 +1,20 @@
+---
+- name: copy local /etc/issue to ans6258-c-vm1,change owner and group to auto,permission to 444
+  hosts: ans6258-c-vm1
+  tasks:
+    - name: copying and changing ownership and group
+      copy: 
+        src: /etc/issue
+        dest: ~/
+        owner: auto
+        group: auto        
+        mode: 444
+    
+
+
+- name: change the timezone on linux to America/Edmonton
+  hosts: ans6258-c-vm*
+  tasks:
+    - name: changin time zone for linux hosts
+      timezone:
+        name: America/Edmonton

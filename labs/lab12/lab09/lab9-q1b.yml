@@ -1,0 +1,32 @@
+---
+- name: variable declaration inside playbook
+  hosts: ans6258-c-vm1
+  vars:
+    grouplist1: group10
+    grouplist2: group20
+    userlist1: user10
+    userlist2: user20
+  tasks:
+    -  name: Group list1 definition 
+       group: 
+        name: "{{grouplist1}}"
+        state: present
+        
+    -  name: Group list2 definition 
+       group: 
+        name: "{{grouplist2}}"
+        state: present
+    -  name: 
+       user:
+        name: "{{userlist1}}"
+        uid: 1800
+        group: "{{grouplist1}}"
+        append: 1
+    -  name: 
+       user:
+        name: "{{userlist2}}"
+        uid: 1900
+        group: "{{grouplist2}}"
+        shell: /bin/bash
+        append: 1
+        home: /home/"{{userlist2}}"

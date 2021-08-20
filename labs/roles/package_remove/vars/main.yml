@@ -1,0 +1,6 @@
+---
+remove_these:
+  - rsync
+  - ldap-utils
+  - nis
+  

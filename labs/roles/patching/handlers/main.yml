@@ -1,0 +1,9 @@
+---
+# handlers file for patching
+- name: reboot_handler
+  tags: reboot
+  shell: "sleep 4 && reboot"
+  async: 1
+  poll: 0
+
+  
